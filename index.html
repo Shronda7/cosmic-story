@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌌 COSMIC STORY — Your Astral Blueprint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cosmic-black: #0a0a0f;
+            --deep-space: #0f0f1a;
+            --nebula-purple: #2d1b4e;
+            --stardust: #6b5b95;
+            --moon-silver: #c0c0d0;
+            --solar-gold: #ffd700;
+            --mars-red: #e74c3c;
+            --venus-pink: #e91e8c;
+            --jupiter-orange: #f39c12;
+            --saturn-grey: #95a5a6;
+            --uranus-teal: #1abc9c;
+            --neptune-blue: #3498db;
+            --pluto-maroon: #8e44ad;
+            --fire: #e74c3c;
+            --earth: #27ae60;
+            --air: #3498db;
+            --water: #2980b9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cosmic-black);
+            color: var(--moon-silver);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Starfield Background ── */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: shoot 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(-100px) translateY(0); opacity: 1; }
+            100% { transform: translateX(100vw) translateY(100px); opacity: 0; }
+        }
+
+        /* ── Layout ── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            background: linear-gradient(135deg, var(--solar-gold), var(--venus-pink), var(--uranus-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--stardust);
+            letter-spacing: 0.15em;
+        }
+
+        .hero .divider {
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--solar-gold), transparent);
+            margin: 2rem auto;
+        }
+
+        /* ── Form ── */
+        .birth-form {
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(107, 91, 149, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            box-shadow: 0 0 60px rgba(107, 91, 149, 0.15);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--stardust);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(107, 91, 149, 0.4);
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+            color: var(--moon-silver);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--solar-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(192, 192, 208, 0.4);
+        }
+
+        .btn-cosmic {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, var(--nebula-purple), var(--stardust));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cosmic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-cosmic:hover::before {
+            left: 100%;
+        }
+
+        .btn-cosmic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(107, 91, 149, 0.4);
+        }
+
+        .btn-cosmic:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ── Loading ── */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(107, 91, 149, 0.3);
+            border-top-color: var(--solar-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--stardust);
+        }
+
+        /* ── Results ── */
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .story-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(15, 15, 26, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(107, 91, 149, 0.2);
+        }
+
+        .story-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--solar-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .story-header p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--stardust);
+        }
+
+        /* ── Section Cards ── */
+        .section-card {
+            background: rgba(15, 15, 26, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(107, 91, 149, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .section-card:hover {
+            border-color: rgba(107, 91, 149, 0.5);
+            box-shadow: 0 0 40px rgba(107, 91, 149, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--solar-gold);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--moon-silver);
+        }
+
+        .section-content strong {
+            color: var(--solar-gold);
+            font-weight: 600;
+        }
+
+        /* ── Planet Grid ── */
+        .planet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .planet-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(107, 91, 149, 0.2);
+            border-radius: 15px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .planet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--planet-color, var(--stardust));
+            opacity: 0.6;
+        }
+
+        .planet-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .planet-symbol {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .planet-name {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--stardust);
+            margin-bottom: 0.3rem;
+        }
+
+        .planet-sign {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--solar-gold);
+        }
+
+        .planet-degree {
+            font-size: 0.8rem;
+            color: rgba(192, 192, 208, 0.6);
+            margin-top: 0.2rem;
+        }
+
+        .planet-house {
+            font-size: 0.7rem;
+            color: var(--uranus-teal);
+            margin-top: 0.3rem;
+        }
+
+        .retro-badge {
+            display: inline-block;
+            background: var(--mars-red);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Element Bars ── */
+        .element-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .element-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .element-label {
+            width: 80px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .element-bar-bg {
+            flex: 1;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .element-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1.5s ease;
+            position: relative;
+        }
+
+        .element-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 30px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2));
+        }
+
+        .element-count {
+            width: 30px;
+            text-align: right;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* ── Aspect List ── */
+        .aspect-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .aspect-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border-left: 3px solid var(--aspect-color, var(--stardust));
+        }
+
+        .aspect-planets {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            min-width: 180px;
+        }
+
+        .aspect-type {
+            font-size: 1.2rem;
+            color: var(--solar-gold);
+        }
+
+        .aspect-orbit {
+            font-size: 0.8rem;
+            color: rgba(192, 192, 208, 0.5);
+            margin-left: auto;
+        }
+
+        /* ── Chart Wheel Canvas ── */
+        .chart-wheel-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        #chartCanvas {
+            max-width: 100%;
+            filter: drop-shadow(0 0 30px rgba(107, 91, 149, 0.3));
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: rgba(192, 192, 208, 0.3);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .birth-form { padding: 1.5rem; }
+            .planet-grid { grid-template-columns: repeat(2, 1fr); }
+            .aspect-planets { min-width: auto; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="starfield"></div>
+
+    <div class="container">
+        <!-- Hero -->
+        <header class="hero">
+            <h1>🌌 COSMIC STORY</h1>
+            <p class="subtitle">Discover the celestial blueprint written in your soul</p>
+            <div class="divider"></div>
+        </header>
+
+        <!-- Birth Form -->
+        <form class="birth-form" id="birthForm">
+            <div class="form-grid">
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="name">Your Cosmic Name</label>
+                    <input type="text" id="name" placeholder="Enter your name..." required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" min="1900" max="2030" value="1990" required>
+                </div>
+                <div class="form-group">
+                    <label for="month">Month</label>
+                    <input type="number" id="month" min="1" max="12" value="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="day">Day</label>
+                    <input type="number" id="day" min="1" max="31" value="15" required>
+                </div>
+                <div class="form-group">
+                    <label for="hour">Hour (24h)</label>
+                    <input type="number" id="hour" min="0" max="23" value="14" required>
+                </div>
+                <div class="form-group">
+                    <label for="minute">Minute</label>
+                    <input type="number" id="minute" min="0" max="59" value="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="lat">Latitude</label>
+                    <input type="number" id="lat" step="0.0001" value="40.7128" placeholder="e.g. 40.7128" required>
+                </div>
+                <div class="form-group">
+                    <label for="lng">Longitude</label>
+                    <input type="number" id="lng" step="0.0001" value="-74.0060" placeholder="e.g. -74.0060" required>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="tz">Timezone</label>
+                    <select id="tz">
+                        <option value="America/New_York">America/New_York (EST/EDT)</option>
+                        <option value="America/Chicago">America/Chicago (CST/CDT)</option>
+                        <option value="America/Denver">America/Denver (MST/MDT)</option>
+                        <option value="America/Los_Angeles">America/Los_Angeles (PST/PDT)</option>
+                        <option value="Europe/London">Europe/London (GMT/BST)</option>
+                        <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
+                        <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
+                        <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                        <option value="Asia/Shanghai">Asia/Shanghai (CST)</option>
+                        <option value="Australia/Sydney">Australia/Sydney (AEST/AEDT)</option>
+                        <option value="UTC">UTC</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn-cosmic" id="submitBtn">
+                ✨ Reveal My Cosmic Story
+            </button>
+        </form>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Aligning the stars... decoding your celestial signature...</p>
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results">
+            <!-- Dynamic content inserted here -->
+        </div>
+
+        <footer class="footer">
+            <p>COSMIC STORY 🌌 Built with Kerykeion & Swiss Ephemeris</p>
+            <p style="margin-top:0.5rem; font-size:0.7rem;">For entertainment and self-reflection purposes</p>
+        </footer>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // 🌟 STARFIELD ANIMATION
+        // ═══════════════════════════════════════════════════════════════
+        const starfield = document.getElementById('starfield');
+        const starCount = 200;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starfield.appendChild(star);
+        }
+
+        // Shooting stars
+        setInterval(() => {
+            const shooting = document.createElement('div');
+            shooting.className = 'shooting-star';
+            shooting.style.top = Math.random() * 50 + '%';
+            shooting.style.left = '0';
+            shooting.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            starfield.appendChild(shooting);
+            setTimeout(() => shooting.remove(), 3000);
+        }, 8000);
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🔮 PLANET COLORS
+        // ═══════════════════════════════════════════════════════════════
+        const planetColors = {
+            'Sun': '#ffd700', 'Moon': '#c0c0d0', 'Mercury': '#95a5a6',
+            'Venus': '#e91e8c', 'Mars': '#e74c3c', 'Jupiter': '#f39c12',
+            'Saturn': '#95a5a6', 'Uranus': '#1abc9c', 'Neptune': '#3498db',
+            'Pluto': '#8e44ad', 'Chiron': '#9b59b6', 'Lilith': '#2c3e50',
+            'North Node': '#f1c40f', 'South Node': '#7f8c8d',
+            'Ascendant': '#e74c3c', 'Medium Coeli': '#f39c12',
+            'Descendant': '#3498db', 'Imum Coeli': '#27ae60'
+        };
+
+        const elementColors = {
+            'Fire': '#e74c3c', 'Earth': '#27ae60',
+            'Air': '#3498db', 'Water': '#2980b9'
+        };
+
+        const aspectColors = {
+            'conjunction': '#ffd700', 'sextile': '#27ae60',
+            'square': '#e74c3c', 'trine': '#3498db',
+            'opposition': '#9b59b6', 'quincunx': '#f39c12'
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // 📡 API & FORM HANDLING
+        // ═══════════════════════════════════════════════════════════════
+        const form = document.getElementById('birthForm');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Demo mode: use mock data since we can't run the backend here
+        // In production, change this to your actual API endpoint
+        const API_URL = '/api/calculate';
+        const USE_MOCK = true; // Set to false when backend is running
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '✨ Consulting the Stars...';
+            loading.classList.add('active');
+            results.classList.remove('active');
+            results.innerHTML = '';
+
+            const formData = {
+                name: document.getElementById('name').value,
+                year: parseInt(document.getElementById('year').value),
+                month: parseInt(document.getElementById('month').value),
+                day: parseInt(document.getElementById('day').value),
+                hour: parseInt(document.getElementById('hour').value),
+                minute: parseInt(document.getElementById('minute').value),
+                lat: parseFloat(document.getElementById('lat').value),
+                lng: parseFloat(document.getElementById('lng').value),
+                tz_str: document.getElementById('tz').value
+            };
+
+            try {
+                let data;
+
+                if (USE_MOCK) {
+                    // Simulate API delay
+                    await new Promise(r => setTimeout(r, 2000));
+                    data = generateMockData(formData);
+                } else {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+                    const result = await response.json();
+                    if (!result.success) throw new Error(result.error);
+                    data = result.data;
+                }
+
+                renderResults(data);
+                loading.classList.remove('active');
+                results.classList.add('active');
+
+                // Scroll to results
+                results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (err) {
+                alert('The stars are cloudy: ' + err.message);
+                loading.classList.remove('active');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '✨ Reveal My Cosmic Story';
+            }
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎭 MOCK DATA GENERATOR (for demo without backend)
+        // ═══════════════════════════════════════════════════════════════
+        function generateMockData(formData) {
+            const signs = ['Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir', 'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'];
+            const signNames = {
+                'Ari': 'Aries', 'Tau': 'Taurus', 'Gem': 'Gemini', 'Can': 'Cancer',
+                'Leo': 'Leo', 'Vir': 'Virgo', 'Lib': 'Libra', 'Sco': 'Scorpio',
+                'Sag': 'Sagittarius', 'Cap': 'Capricorn', 'Aqu': 'Aquarius', 'Pis': 'Pisces'
+            };
+
+            // Deterministic pseudo-random based on birth data
+            const seed = formData.year + formData.month * 31 + formData.day + formData.hour;
+            const rand = (n) => Math.abs(Math.sin(seed * n) * 10000) % 1;
+
+            const planets = [
+                { name: 'Sun', sign: signs[Math.floor(rand(1) * 12)], position: rand(2) * 30, house: Math.floor(rand(3) * 12) + 1, retrograde: false },
+                { name: 'Moon', sign: signs[Math.floor(rand(4) * 12)], position: rand(5) * 30, house: Math.floor(rand(6) * 12) + 1, retrograde: false },
+                { name: 'Mercury', sign: signs[Math.floor(rand(7) * 12)], position: rand(8) * 30, house: Math.floor(rand(9) * 12) + 1, retrograde: rand(10) > 0.7 },
+                { name: 'Venus', sign: signs[Math.floor(rand(11) * 12)], position: rand(12) * 30, house: Math.floor(rand(13) * 12) + 1, retrograde: rand(14) > 0.8 },
+                { name: 'Mars', sign: signs[Math.floor(rand(15) * 12)], position: rand(16) * 30, house: Math.floor(rand(17) * 12) + 1, retrograde: rand(18) > 0.85 },
+                { name: 'Jupiter', sign: signs[Math.floor(rand(19) * 12)], position: rand(20) * 30, house: Math.floor(rand(21) * 12) + 1, retrograde: false },
+                { name: 'Saturn', sign: signs[Math.floor(rand(22) * 12)], position: rand(23) * 30, house: Math.floor(rand(24) * 12) + 1, retrograde: rand(25) > 0.6 },
+                { name: 'Uranus', sign: signs[Math.floor(rand(26) * 12)], position: rand(27) * 30, house: Math.floor(rand(28) * 12) + 1, retrograde: false },
+                { name: 'Neptune', sign: signs[Math.floor(rand(29) * 12)], position: rand(30) * 30, house: Math.floor(rand(31) * 12) + 1, retrograde: false },
+                { name: 'Pluto', sign: signs[Math.floor(rand(32) * 12)], position: rand(33) * 30, house: Math.floor(rand(34) * 12) + 1, retrograde: rand(35) > 0.5 },
+            ];
+
+            const planetSymbols = {
+                'Sun': '☉', 'Moon': '☽', 'Mercury': '☿', 'Venus': '♀', 'Mars': '♂',
+                'Jupiter': '♃', 'Saturn': '♄', 'Uranus': '♅', 'Neptune': '♆', 'Pluto': '♇'
+            };
+
+            const signSymbols = {
+                'Ari': '♈', 'Tau': '♉', 'Gem': '♊', 'Can': '♋', 'Leo': '♌', 'Vir': '♍',
+                'Lib': '♎', 'Sco': '♏', 'Sag': '♐', 'Cap': '♑', 'Aqu': '♒', 'Pis': '♓'
+            };
+
+            const elements = {
+                'Ari': 'Fire', 'Leo': 'Fire', 'Sag': 'Fire',
+                'Tau': 'Earth', 'Vir': 'Earth', 'Cap': 'Earth',
+                'Gem': 'Air', 'Lib': 'Air', 'Aqu': 'Air',
+                'Can': 'Water', 'Sco': 'Water', 'Pis': 'Water'
+            };
+
+            const modalities = {
+                'Ari': 'Cardinal', 'Can': 'Cardinal', 'Lib': 'Cardinal', 'Cap': 'Cardinal',
+                'Tau': 'Fixed', 'Leo': 'Fixed', 'Sco': 'Fixed', 'Aqu': 'Fixed',
+                'Gem': 'Mutable', 'Vir': 'Mutable', 'Sag': 'Mutable', 'Pis': 'Mutable'
+            };
+
+            planets.forEach(p => {
+                p.sign_symbol = signSymbols[p.sign];
+                p.symbol = planetSymbols[p.name];
+                p.element = elements[p.sign];
+                p.modality = modalities[p.sign];
+                p.position = Math.round(p.position * 100) / 100;
+            });
+
+            // Add angles
+            planets.push(
+                { name: 'Ascendant', sign: signs[Math.floor(rand(36) * 12)], position: rand(37) * 30, symbol: 'ASC', sign_symbol: signSymbols[signs[Math.floor(rand(36) * 12)]], element: elements[signs[Math.floor(rand(36) * 12)]], modality: modalities[signs[Math.floor(rand(36) * 12)]], is_angle: true },
+                { name: 'Medium Coeli', sign: signs[Math.floor(rand(38) * 12)], position: rand(39) * 30, symbol: 'MC', sign_symbol: signSymbols[signs[Math.floor(rand(38) * 12)]], element: elements[signs[Math.floor(rand(38) * 12)]], modality: modalities[signs[Math.floor(rand(38) * 12)]], is_angle: true }
+            );
+
+            // Generate aspects
+            const aspectTypes = ['conjunction', 'sextile', 'square', 'trine', 'opposition'];
+            const aspectSymbols = { 'conjunction': '☌', 'sextile': '⚹', 'square': '□', 'trine': '△', 'opposition': '☍' };
+            const aspects = [];
+
+            for (let i = 0; i < planets.length - 1; i++) {
+                for (let j = i + 1; j < planets.length; j++) {
+                    if (rand(i * 10 + j) > 0.7) {
+                        const type = aspectTypes[Math.floor(rand(i * 20 + j) * aspectTypes.length)];
+                        aspects.push({
+                            p1_name: planets[i].name,
+                            p1_symbol: planets[i].symbol,
+                            p2_name: planets[j].name,
+                            p2_symbol: planets[j].symbol,
+                            aspect_type: type,
+                            aspect_symbol: aspectSymbols[type],
+                            orbit: Math.round(rand(i * 30 + j) * 8 * 100) / 100,
+                            is_major: true
+                        });
+                    }
+                }
+            }
+
+            // Element counts
+            const elementCounts = { 'Fire': 0, 'Earth': 0, 'Air': 0, 'Water': 0 };
+            planets.forEach(p => { if (p.element) elementCounts[p.element]++; });
+
+            return {
+                subject: {
+                    name: formData.name,
+                    birth_date: `${formData.year}-${String(formData.month).padStart(2,'0')}-${String(formData.day).padStart(2,'0')}`,
+                    birth_time: `${String(formData.hour).padStart(2,'0')}:${String(formData.minute).padStart(2,'0')}`
+                },
+                planets: planets,
+                aspects: aspects.slice(0, 8),
+                elements: elementCounts
+            };
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎨 RENDER RESULTS
+        // ═══════════════════════════════════════════════════════════════
+        function renderResults(data) {
+            const sun = data.planets.find(p => p.name === 'Sun');
+            const moon = data.planets.find(p => p.name === 'Moon');
+            const asc = data.planets.find(p => p.name === 'Ascendant');
+
+            const signNames = {
+                'Ari': 'Aries', 'Tau': 'Taurus', 'Gem': 'Gemini', 'Can': 'Cancer',
+                'Leo': 'Leo', 'Vir': 'Virgo', 'Lib': 'Libra', 'Sco': 'Scorpio',
+                'Sag': 'Sagittarius', 'Cap': 'Capricorn', 'Aqu': 'Aquarius', 'Pis': 'Pisces'
+            };
+
+            const signDescriptions = {
+                'Ari': 'Bold, pioneering, and fiercely independent. A natural warrior spirit.',
+                'Tau': 'Sensual, grounded, and deeply loyal. A builder of lasting beauty.',
+                'Gem': 'Curious, witty, and endlessly versatile. A messenger of ideas.',
+                'Can': 'Nurturing, intuitive, and emotionally deep. A guardian of the heart.',
+                'Leo': 'Radiant, creative, and born to lead. A sovereign of self-expression.',
+                'Vir': 'Analytical, devoted, and precision-driven. A healer through service.',
+                'Lib': 'Harmonious, diplomatic, and aesthetically refined. A bridge between worlds.',
+                'Sco': 'Intense, transformative, and magnetically powerful. A phoenix soul.',
+                'Sag': 'Adventurous, philosophical, and freedom-loving. A seeker of truth.',
+                'Cap': 'Ambitious, disciplined, and masterfully strategic. A builder of legacy.',
+                'Aqu': 'Visionary, unconventional, and humanitarian. A rebel with a cause.',
+                'Pis': 'Empathic, dreamy, and spiritually attuned. A vessel of cosmic love.'
+            };
+
+            const elementDescriptions = {
+                'Fire': 'passionate leadership and creative vision',
+                'Earth': 'building tangible success and grounded wisdom',
+                'Air': 'intellectual mastery and social brilliance',
+                'Water': 'emotional intelligence and spiritual depth'
+            };
+
+            const dominant = Object.entries(data.elements).sort((a,b) => b[1]-a[1])[0];
+            const weakest = Object.entries(data.elements).sort((a,b) => a[1]-b[1])[0];
+
+            const html = `
+                <div class="story-header">
+                    <h2>The Celestial Blueprint of ${data.subject.name}</h2>
+                    <p>Born under the ${signNames[sun.sign]} Sun on ${data.subject.birth_date} at ${data.subject.birth_time}</p>
+                </div>
+
+                <!-- Chart Wheel -->
+                <div class="section-card">
+                    <h3 class="section-title">🎡 Your Celestial Wheel</h3>
+                    <div class="chart-wheel-container">
+                        <canvas id="chartCanvas" width="500" height="500"></canvas>
+                    </div>
+                </div>
+
+                <!-- Primal Trinity -->
+                <div class="section-card">
+                    <h3 class="section-title">🔥 The Primal Trinity</h3>
+                    <div class="section-content">
+                        <p>Your cosmic signature is written in three sacred flames:</p>
+                        <br>
+                        <p><strong>☉ Sun in ${signNames[sun.sign]}</strong> — ${signDescriptions[sun.sign]}<br>
+                        This is your radiant core, the eternal light that fuels your journey.</p>
+                        <br>
+                        <p><strong>☽ Moon in ${signNames[moon.sign]}</strong> — ${signDescriptions[moon.sign]}<br>
+                        This is your inner ocean, the tides that move your soul.</p>
+                        <br>
+                        <p><strong>↑ Ascendant in ${signNames[asc.sign]}</strong> — ${signDescriptions[asc.sign]}<br>
+                        This is your cosmic mask, the first impression you cast upon the world.</p>
+                        <br>
+                        <p>Together, these three form your <strong>Primal Trinity</strong> — the foundation of your astral identity.</p>
+                    </div>
+                </div>
+
+                <!-- All Planets -->
+                <div class="section-card">
+                    <h3 class="section-title">🪐 Planetary Positions</h3>
+                    <div class="planet-grid" id="planetGrid"></div>
+                </div>
+
+                <!-- Elemental Balance -->
+                <div class="section-card">
+                    <h3 class="section-title">⚖️ Elemental Alchemy</h3>
+                    <div class="section-content">
+                        <p>Your chart reveals a <strong>${dominant[0]}-dominant</strong> constitution with ${dominant[1]} planetary placements.</p>
+                        <br>
+                        <div class="element-bars">
+                            ${Object.entries(data.elements).map(([elem, count]) => `
+                                <div class="element-row">
+                                    <span class="element-label">${elem === 'Fire' ? '🔥' : elem === 'Earth' ? '🌍' : elem === 'Air' ? '💨' : '🌊'} ${elem}</span>
+                                    <div class="element-bar-bg">
+                                        <div class="element-bar-fill" style="width: 0%; background: ${elementColors[elem]};" data-width="${(count / Math.max(...Object.values(data.elements))) * 100}%"></div>
+                                    </div>
+                                    <span class="element-count">${count}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <br>
+                        <p>Your dominant <strong>${dominant[0]}</strong> gives you natural gifts in ${elementDescriptions[dominant[0]]}.</p>
+                        <p>Your ${weakest[0]} element (${weakest[1]} placements) calls for conscious cultivation — this is where your soul seeks growth.</p>
+                    </div>
+                </div>
+
+                <!-- Aspects -->
+                <div class="section-card">
+                    <h3 class="section-title">✨ Sacred Geometry</h3>
+                    <div class="aspect-list">
+                        ${data.aspects.map(a => `
+                            <div class="aspect-item" style="--aspect-color: ${aspectColors[a.aspect_type]}">
+                                <span class="aspect-planets">${a.p1_symbol} ${a.p1_name} <span style="color:${aspectColors[a.aspect_type]}">${a.aspect_symbol}</span> ${a.p2_symbol} ${a.p2_name}</span>
+                                <span class="aspect-orbit">${a.orbit}° orb</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Retrogrades -->
+                ${data.planets.filter(p => p.retrograde).length > 0 ? `
+                <div class="section-card">
+                    <h3 class="section-title">🔄 Karmic Rewind</h3>
+                    <div class="section-content">
+                        <p>These planets move backward through your sky, carrying deep soul memories:</p>
+                        <br>
+                        ${data.planets.filter(p => p.retrograde).map(p => `
+                            <p><strong>${p.symbol} ${p.name}</strong> retrograde in ${signNames[p.sign]} — 
+                            Your ${p.name.toLowerCase()} energy turns inward. This is a karmic review lifetime for this archetype.</p>
+                        `).join('<br>')}
+                    </div>
+                </div>
+                ` : ''}
+            `;
+
+            results.innerHTML = html;
+
+            // Render planet cards
+            const grid = document.getElementById('planetGrid');
+            grid.innerHTML = data.planets.map(p => `
+                <div class="planet-card" style="--planet-color: ${planetColors[p.name] || '#6b5b95'}">
+                    <div class="planet-symbol">${p.symbol}</div>
+                    <div class="planet-name">${p.name}</div>
+                    <div class="planet-sign">${p.sign_symbol} ${signNames[p.sign]}</div>
+                    <div class="planet-degree">${p.position.toFixed(1)}° ${p.modality}</div>
+                    ${p.house ? `<div class="planet-house">House ${p.house}</div>` : ''}
+                    ${p.retrograde ? '<span class="retro-badge">Retro</span>' : ''}
+                </div>
+            `).join('');
+
+            // Animate element bars
+            setTimeout(() => {
+                document.querySelectorAll('.element-bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width;
+                });
+            }, 300);
+
+            // Draw chart wheel
+            drawChartWheel(data.planets);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎡 DRAW CHART WHEEL
+        // ═══════════════════════════════════════════════════════════════
+        function drawChartWheel(planets) {
+            const canvas = document.getElementById('chartCanvas');
+            const ctx = canvas.getContext('2d');
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const radius = 200;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background glow
+            const gradient = ctx.createRadialGradient(cx, cy, 50, cx, cy, radius + 50);
+            gradient.addColorStop(0, 'rgba(45, 27, 78, 0.3)');
+            gradient.addColorStop(1, 'rgba(10, 10, 15, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Zodiac ring
+            const signColors = {
+                'Ari': '#e74c3c', 'Tau': '#27ae60', 'Gem': '#f39c12', 'Can': '#3498db',
+                'Leo': '#e74c3c', 'Vir': '#27ae60', 'Lib': '#f39c12', 'Sco': '#3498db',
+                'Sag': '#e74c3c', 'Cap': '#27ae60', 'Aqu': '#f39c12', 'Pis': '#3498db'
+            };
+
+            const signs = ['Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir', 'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'];
+
+            // Draw zodiac segments
+            for (let i = 0; i < 12; i++) {
+                const startAngle = (i * 30 - 90) * Math.PI / 180;
+                const endAngle = ((i + 1) * 30 - 90) * Math.PI / 180;
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, startAngle, endAngle);
+                ctx.arc(cx, cy, radius - 35, endAngle, startAngle, true);
+                ctx.closePath();
+                ctx.fillStyle = signColors[signs[i]] + '20';
+                ctx.fill();
+                ctx.strokeStyle = signColors[signs[i]] + '60';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Sign symbols
+                const midAngle = (startAngle + endAngle) / 2;
+                const sx = cx + Math.cos(midAngle) * (radius - 18);
+                const sy = cy + Math.sin(midAngle) * (radius - 18);
+                ctx.fillStyle = signColors[signs[i]];
+                ctx.font = '16px serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const symbols = {'Ari':'♈','Tau':'♉','Gem':'♊','Can':'♋','Leo':'♌','Vir':'♍','Lib':'♎','Sco':'♏','Sag':'♐','Cap':'♑','Aqu':'♒','Pis':'♓'};
+                ctx.fillText(symbols[signs[i]], sx, sy);
+            }
+
+            // House lines
+            ctx.strokeStyle = 'rgba(192, 192, 208, 0.15)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30 - 90) * Math.PI / 180;
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.lineTo(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius);
+                ctx.stroke();
+            }
+
+            // Inner circles
+            ctx.strokeStyle = 'rgba(192, 192, 208, 0.1)';
+            ctx.lineWidth = 1;
+            [radius - 35, radius - 70, 60].forEach(r => {
+                ctx.beginPath();
+                ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+
+            // Center
+            ctx.beginPath();
+            ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffd700';
+            ctx.fill();
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = '#ffd700';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Planet positions
+            const planetSymbols = {
+                'Sun': '☉', 'Moon': '☽', 'Mercury': '☿', 'Venus': '♀', 'Mars': '♂',
+                'Jupiter': '♃', 'Saturn': '♄', 'Uranus': '♅', 'Neptune': '♆', 'Pluto': '♇'
+            };
+
+            const signOrder = ['Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir', 'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'];
+
+            planets.filter(p => !p.is_angle).forEach((p, idx) => {
+                const signIdx = signOrder.indexOf(p.sign);
+                const angle = ((signIdx * 30 + p.position) - 90) * Math.PI / 180;
+                const dist = radius - 55 - (idx % 3) * 15;
+
+                const px = cx + Math.cos(angle) * dist;
+                const py = cy + Math.sin(angle) * dist;
+
+                // Planet dot
+                ctx.beginPath();
+                ctx.arc(px, py, 5, 0, Math.PI * 2);
+                ctx.fillStyle = planetColors[p.name] || '#fff';
+                ctx.fill();
+
+                // Planet symbol
+                ctx.fillStyle = '#fff';
+                ctx.font = '12px serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(planetSymbols[p.name] || p.name[0], px, py - 10);
+
+                // Retrograde indicator
+                if (p.retrograde) {
+                    ctx.fillStyle = '#e74c3c';
+                    ctx.font = '10px sans-serif';
+                    ctx.fillText('℞', px + 8, py + 4);
+                }
+            });
+
+            // Ascendant marker
+            const asc = planets.find(p => p.name === 'Ascendant');
+            if (asc) {
+                const ascAngle = ((signOrder.indexOf(asc.sign) * 30 + asc.position) - 90) * Math.PI / 180;
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(ascAngle) * (radius - 35), cy + Math.sin(ascAngle) * (radius - 35));
+                ctx.lineTo(cx + Math.cos(ascAngle) * radius, cy + Math.sin(ascAngle) * radius);
+                ctx.strokeStyle = '#e74c3c';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // ASC label
+                const lx = cx + Math.cos(ascAngle) * (radius + 15);
+                const ly = cy + Math.sin(ascAngle) * (radius + 15);
+                ctx.fillStyle = '#e74c3c';
+                ctx.font = 'bold 10px sans-serif';
+                ctx.fillText('ASC', lx, ly);
+            }
+        }
+    </script>
+</body>
+</html>
